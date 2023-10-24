@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import CSVUploadForm
 from .models import CSVData
 import csv
+import json
 import logging
 from django.views import View
 
@@ -80,11 +81,13 @@ class CSVView(APIView):
             else:
                 # Retrieve all CSV files
                 all_csv_data = CSVData.objects.all().values('id', 'document')
-                response = HttpResponse(content_type='text/csv')
-                response['Content-Disposition'] = 'attachment; filename="all_csv_data.csv"'
-                for csv_data in all_csv_data:
-                    response.write(csv_data['document'])
-                return response  # Return the entire CSV content as a response
+                return JsonResponse(list(all_csv_data), safe=False)
+                # all_csv_data = CSVData.objects.all().values('id', 'document')
+                # response = HttpResponse(content_type='text/csv')
+                # response['Content-Disposition'] = 'attachment; filename="all_csv_data.csv"'
+                # for csv_data in all_csv_data:
+                #     response.write(csv_data['document'])
+                # return response  # Return the entire CSV content as a response
 
         else:
             return HttpResponse(status=405, content="Only POST method allowed.")
@@ -98,12 +101,12 @@ class GetCSVData(APIView):
             try:
                 file_id = request.GET.get("file_id")
                 csv_data = get_object_or_404(CSVData, id=file_id)
-                print(csv_data.document,csv_data.id)
-                csv_data = get_object_or_404(CSVData, id=file_id)
-                with csv_data.document.open() as file:
-                    csv_content = file.read()
-                    print(csv_content)
-                return HttpResponse(status=200, content=csv_data)
+                response_dict ={
+                    "id"  : csv_data.id,
+                    "title": csv_data.title,
+                    "content": csv_data.content
+                }
+                return HttpResponse(status=200, content=json.dumps(response_dict))
             except Exception as e:
                 logger.exception(f"Exception occurred while reading data from :{CSVData}. Error: {e}")
                 return
