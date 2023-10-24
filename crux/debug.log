@@ -1,0 +1,497 @@
+DEBUG 2023-10-24 19:00:53,405 views Request: <WSGIRequest: POST '/api/v1/csv'>
+ERROR 2023-10-24 19:01:12,854 views Error while storing csv file: <MultiValueDict: {'document': [<InMemoryUploadedFile: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv (text/csv)>]}>
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 36, in upload_csv
+    uploaded_csv = request.FILES.get['files']
+TypeError: 'method' object is not subscriptable
+ERROR 2023-10-24 19:01:12,856 log Internal Server Error: /api/v1/csv
+INFO 2023-10-24 19:01:32,147 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:01:32,980 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:01:34,245 views Request: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:01:45,943 views Csv file data: None
+ERROR 2023-10-24 19:01:45,943 views Error while storing csv file: <MultiValueDict: {'document': [<InMemoryUploadedFile: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv (text/csv)>]}>
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 38, in upload_csv
+    decoded_csv = uploaded_csv.read().decode('utf-8')
+AttributeError: 'NoneType' object has no attribute 'read'
+ERROR 2023-10-24 19:01:45,944 log Internal Server Error: /api/v1/csv
+INFO 2023-10-24 19:01:56,596 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:01:59,460 views Request: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:01:59,462 views Csv file data: None
+ERROR 2023-10-24 19:01:59,462 views Error while storing csv file: <MultiValueDict: {'document': [<InMemoryUploadedFile: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv (text/csv)>]}>
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 38, in upload_csv
+    decoded_csv = uploaded_csv.read().decode('utf-8')
+AttributeError: 'NoneType' object has no attribute 'read'
+ERROR 2023-10-24 19:01:59,463 log Internal Server Error: /api/v1/csv
+INFO 2023-10-24 19:02:50,574 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:02:51,109 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:03:06,504 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:03:06,862 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:03:30,830 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:03:33,543 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+ERROR 2023-10-24 19:03:33,557 views Error while storing csv file: <MultiValueDict: {'document': [<InMemoryUploadedFile: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv (text/csv)>]}>
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: csv_manager_csvdata
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 36, in upload_csv
+    form.save()
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/forms/models.py", line 542, in save
+    self.instance.save()
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: csv_manager_csvdata
+ERROR 2023-10-24 19:03:33,563 log Internal Server Error: /api/v1/csv
+INFO 2023-10-24 19:05:40,200 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:05:42,667 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:05:42,672 views Csv file data: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv
+DEBUG 2023-10-24 19:09:18,284 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:09:18,290 views Csv file data: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv
+INFO 2023-10-24 19:09:18,471 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/models.py changed, reloading.
+INFO 2023-10-24 19:09:18,864 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:14:13,091 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:14:13,434 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:14:16,524 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+ERROR 2023-10-24 19:14:16,537 views Error while storing csv file: <MultiValueDict: {'document': [<InMemoryUploadedFile: Acos for each date for all campaigns for the keyword ‘Care Platform’.csv (text/csv)>]}>
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: csv_manager_csvdata.file_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 36, in upload_csv
+    form.save()
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/forms/models.py", line 542, in save
+    self.instance.save()
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: csv_manager_csvdata.file_id
+ERROR 2023-10-24 19:14:16,549 log Internal Server Error: /api/v1/csv
+INFO 2023-10-24 19:19:49,226 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:19:56,821 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:21:29,338 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:21:29,744 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:22:33,023 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:22:33,483 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:23:53,448 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:23:54,001 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:25:23,424 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:25:23,776 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:25:26,624 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+DEBUG 2023-10-24 19:25:32,232 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+WARNING 2023-10-24 19:25:32,234 log Bad Request: /api/v1/csv
+DEBUG 2023-10-24 19:25:41,193 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+WARNING 2023-10-24 19:25:41,194 log Bad Request: /api/v1/csv
+INFO 2023-10-24 19:25:41,229 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:25:41,660 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:25:49,183 views upload csv endpoint invoked with req: <WSGIRequest: POST '/api/v1/csv'>
+INFO 2023-10-24 19:26:15,356 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:26:15,922 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:28:15,642 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:28:16,047 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:29:10,015 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:29:10,375 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:29:45,816 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:29:46,178 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:32:15,109 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:32:15,490 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:33:33,441 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:33:33,837 autoreload Watching for file changes with StatReloader
+WARNING 2023-10-24 19:35:04,687 log Method Not Allowed: /api/v1/csv
+INFO 2023-10-24 19:36:23,410 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:36:23,768 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:36:27,754 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:36:27,780 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 76, in get_csv_file
+    response.write(f"{csv_data.unique_id},{csv_data.content}\n")
+AttributeError: 'CSVData' object has no attribute 'unique_id'
+INFO 2023-10-24 19:36:50,303 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:36:50,658 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:36:52,323 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:36:52,356 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 76, in get_csv_file
+    response.write(f"{csv_data.unique_id},{csv_data.content}\n")
+AttributeError: 'CSVData' object has no attribute 'unique_id'
+DEBUG 2023-10-24 19:37:01,702 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:37:01,721 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 76, in get_csv_file
+    response.write(f"{csv_data.unique_id},{csv_data.content}\n")
+AttributeError: 'CSVData' object has no attribute 'unique_id'
+INFO 2023-10-24 19:37:57,009 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:38:05,350 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:38:13,332 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:39:01,056 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 76, in get_csv_file
+    response.write(f"{csv_data.unique_id},{csv_data.content}\n")
+AttributeError: 'CSVData' object has no attribute 'unique_id'
+INFO 2023-10-24 19:39:07,212 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:39:09,103 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:39:09,937 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:39:16,391 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 76, in get_csv_file
+    response.write(f"{csv_data.unique_id},{csv_data.content}\n")
+AttributeError: 'CSVData' object has no attribute 'unique_id'
+INFO 2023-10-24 19:40:42,926 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:40:43,773 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:40:52,900 views get csv file endpoint invoked with query param: None
+INFO 2023-10-24 19:40:53,250 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:40:54,116 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:40:59,013 views get csv file endpoint invoked with query param: None
+INFO 2023-10-24 19:42:41,154 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:42:41,924 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:42:42,725 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:42:42,818 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 70, in get_csv_file
+    all_csv_data = CSVData.objects.all().values('unique_id', 'content')
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+DEBUG 2023-10-24 19:42:44,165 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:42:44,253 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 70, in get_csv_file
+    all_csv_data = CSVData.objects.all().values('unique_id', 'content')
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+INFO 2023-10-24 19:42:50,238 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:42:51,613 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:42:51,696 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 70, in get_csv_file
+    all_csv_data = CSVData.objects.all().values('unique_id', 'content')
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+DEBUG 2023-10-24 19:42:52,544 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:42:52,625 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 70, in get_csv_file
+    all_csv_data = CSVData.objects.all().values('unique_id', 'content')
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+DEBUG 2023-10-24 19:43:04,621 views get csv file endpoint invoked with query param: None
+ERROR 2023-10-24 19:43:04,690 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2161, in add_fields
+    join_info = self.setup_joins(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1823, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 70, in get_csv_file
+    all_csv_data = CSVData.objects.all().values('id', 'document')
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2460, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2194, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'unique_id' into field. Choices are: description, document, id, title, uploaded_at
+INFO 2023-10-24 19:43:04,995 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:43:05,726 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 19:43:06,451 views get csv file endpoint invoked with query param: None
+INFO 2023-10-24 19:43:31,851 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:43:32,648 autoreload Watching for file changes with StatReloader
+WARNING 2023-10-24 19:43:37,019 log Method Not Allowed: /api/v1/csv
+INFO 2023-10-24 19:43:50,534 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:43:51,420 autoreload Watching for file changes with StatReloader
+WARNING 2023-10-24 19:43:51,635 log Method Not Allowed: /api/v1/csv
+INFO 2023-10-24 19:44:25,668 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:44:26,455 autoreload Watching for file changes with StatReloader
+WARNING 2023-10-24 19:44:27,241 log Method Not Allowed: /api/v1/csv
+WARNING 2023-10-24 19:44:28,542 log Method Not Allowed: /api/v1/csv
+INFO 2023-10-24 19:45:04,711 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:45:05,472 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:45:39,911 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:45:40,629 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:46:38,945 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:46:40,796 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:52:06,163 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:52:41,800 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 19:52:42,117 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:53:34,014 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:53:34,379 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:53:56,807 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 19:54:51,992 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 19:54:52,341 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 20:39:52,956 views get csv file endpoint invoked with query param: 2
+ERROR 2023-10-24 20:39:52,983 log Internal Server Error: /api/v1/csv/
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view csv_manager.views.view didn't return an HttpResponse object. It returned None instead.
+INFO 2023-10-24 21:03:32,044 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/urls.py changed, reloading.
+INFO 2023-10-24 21:03:32,434 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 21:03:35,201 views get csv file endpoint invoked with query param: 2
+ERROR 2023-10-24 21:03:35,245 log Internal Server Error: /api/v1/csv
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view csv_manager.views.view didn't return an HttpResponse object. It returned None instead.
+INFO 2023-10-24 21:07:28,967 autoreload Watching for file changes with StatReloader
+INFO 2023-10-24 21:07:35,856 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 21:07:52,466 views get csv file endpoint invoked with query param: 2
+ERROR 2023-10-24 21:08:26,801 log Internal Server Error: /api/v1/csv
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view csv_manager.views.view didn't return an HttpResponse object. It returned None instead.
+INFO 2023-10-24 21:08:29,466 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 21:08:30,323 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 21:08:31,662 views get csv file endpoint invoked with query param: 2
+ERROR 2023-10-24 21:08:34,388 log Internal Server Error: /api/v1/csv
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 68, in get
+    return JsonResponse(csv_data, safe=False)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/http/response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/serializers/json.py", line 106, in default
+    return super().default(o)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CSVData is not JSON serializable
+INFO 2023-10-24 21:08:45,482 autoreload Watching for file changes with StatReloader
+DEBUG 2023-10-24 21:08:46,487 views get csv file endpoint invoked with query param: 2
+ERROR 2023-10-24 21:08:57,063 log Internal Server Error: /api/v1/csv
+Traceback (most recent call last):
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py", line 68, in get
+    return JsonResponse(csv_data, safe=False)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/http/response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/Users/ankushpandey/Documents/Graphs/venv/lib/python3.9/site-packages/django/core/serializers/json.py", line 106, in default
+    return super().default(o)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CSVData is not JSON serializable
+INFO 2023-10-24 21:09:48,325 autoreload /Users/ankushpandey/Documents/Graphs/crux/csv_manager/views.py changed, reloading.
+INFO 2023-10-24 21:09:49,183 autoreload Watching for file changes with StatReloader

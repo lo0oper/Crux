@@ -15,8 +15,10 @@ Crux a data visualizer application
 
 
 
+
 ### Features
 1. Used `livesync` for hot reloading django server.
 2. Installed pgadmin to manage postgres server from web-browser like mysql workbench.
-3. 
+3. For accessing and viewing the database use this [sqlite chrome extension](https://chrome.google.com/webstore/detail/sqlite-manager/njognipnngillknkhikjecpnbkefclfe/related)
+4. `csv_manager_csvdata` table has the csv files in document field
 >>>>>>> 8f7946f (basic home application in django)
