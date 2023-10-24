@@ -26,9 +26,10 @@ SECRET_KEY = "django-insecure-^ai%8q@5v4xx@&j_z*if%t4eupmyjrd9)hh$3h@ziqvv&r)d1o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
-
-
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://localhost:8000/',"http://127.0.0.1:8000/"]
+# CSRF_COOKIE_SECURE=False
+# CORS_REPLACE_HTTPS_REFERER = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
 DJANGO_LIVESYNC = {
     'PORT': 8000, # this is optional and is default set to 9001.
     'HOST': '127.0.0.1'
-
 }
 
 MIDDLEWARE = [

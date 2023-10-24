@@ -1,2 +1,7 @@
 .idea
 *migrations
+*documents
+*.log
+*.iml
+*.csv
+*.py
