@@ -5,10 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from .forms import CSVUploadForm
 from .models import CSVData
-import csv
+from .utilities  import get_csv_config,get_possible_graphs
 import json
 import logging
 from django.views import View
+
 
 logger = logging.getLogger(__name__)
 
@@ -102,7 +103,7 @@ class GetCSVData(APIView):
                 file_id = request.GET.get("file_id")
                 csv_data = get_object_or_404(CSVData, id=file_id)
                 response_dict ={
-                    "id"  : csv_data.id,
+                    "id": csv_data.id,
                     "title": csv_data.title,
                     "content": csv_data.content
                 }
@@ -112,3 +113,41 @@ class GetCSVData(APIView):
                 return
         else:
             return HttpResponse(status=405, content="Only GET method allowed.")
+
+
+
+class GetConfig(APIView):
+    """
+    - Params :
+    file_id => csv_file id who's config has to be prepared.
+    possible_graphs => Boolean value indicating if possible graphs have to be provided in response or not.
+
+    """
+    def get(self,request):
+        file_id = request.GET.get("file_id")
+        possible_graphs = request.GET.get("possible_graphs")
+        if file_id is None:
+            return HttpResponse(status="400",content="Please provide the file_id for creating the config")
+        csv_file_obj = get_object_or_404(CSVData, id=file_id)
+        csv_data = csv_file_obj.content
+        csv_config = get_csv_config(csv_data)
+
+        response_dict = {
+            "file_id": file_id,
+            "csv_config": csv_config
+        }
+        if possible_graphs:
+            possible_graphs = get_possible_graphs(csv_config)
+            response_dict["possible_graphs"] = possible_graphs
+
+        return HttpResponse(status="200",content=response_dict)
+
+
+class GetPossibleGraphs(APIView):
+    def post(self, request):
+        csv_config = request.POST.get("csv_config")
+        if csv_config is None:
+            return HttpResponse(status="400", content="Please provide the csv_config for getting possibel graphs")
+        possible_graphs = get_possible_graphs(csv_config)
+        return HttpResponse(status="200", content=possible_graphs)
+
