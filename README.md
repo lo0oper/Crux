@@ -50,7 +50,37 @@ req body:
     }
 }
 ```
-
+6. POST `/api/v1/csv/save-config` for saving configurations of a specific file in database.
+sample req body:
+```json
+{
+    "file_id": "5",
+    "file_config": {
+        "Campaign Id": {
+            "type": "string"
+        },
+        "Campaign Type": {
+            "type": "string"
+        },
+        "Total Spend": {
+            "type": "number"
+        },
+        "Total Revenue": {
+            "type": "number"
+        },
+        "Combined Acos": {
+            "type": "number"
+        }
+    }
+}
+```
+7. POST `/api/v1/qna` : To answer questions. Generated answer tells which graphs out of all the graphs in database are best to answer the question along with reasoning for it.   
+req body:
+```json
+{
+    "question":"tell me how to increase my sales?"
+}
+```
 
 ### Steps to create the project
 1. Created a project in Pycharm
