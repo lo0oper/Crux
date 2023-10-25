@@ -8,13 +8,11 @@ from .models import CSVData
 from .utilities  import get_csv_config,get_possible_graphs
 import json
 import logging
-from django.views import View
+
 
 
 logger = logging.getLogger(__name__)
 
-
-# Create your views here.
 
 def home(req):
     return HttpResponse("HOME", req)
@@ -59,6 +57,14 @@ class CSVView(APIView):
                     #     csv_data_instance.save()
                     return HttpResponse(status=201)
                 else:
+            ##-------Uncomment this code to store any kind of data----#####
+                    # csv_file = request.FILES['document']
+                    # print(request)
+                    # csv_content = csv_file.read().decode('utf-8')
+                    # csv_title = request.data['title']
+                    # description = request.data['description']
+                    # instance = CSVData(content=csv_content,description=description,title =csv_title)
+                    # instance.save()
                     return HttpResponse(status=400,
                                         content="Invalid form data. Required fields: title(CharField),description(CharFeild), document(File)")
             except Exception as e:
@@ -140,14 +146,16 @@ class GetConfig(APIView):
             possible_graphs = get_possible_graphs(csv_config)
             response_dict["possible_graphs"] = possible_graphs
 
-        return HttpResponse(status="200",content=response_dict)
+        return HttpResponse(status="200",content=json.dumps(response_dict))
 
 
 class GetPossibleGraphs(APIView):
     def post(self, request):
         csv_config = request.POST.get("csv_config")
+        csv_config = request.data["csv_config"]
         if csv_config is None:
-            return HttpResponse(status="400", content="Please provide the csv_config for getting possibel graphs")
+            return HttpResponse(status="400", content="Please provide the csv_config for getting possible graphs")
         possible_graphs = get_possible_graphs(csv_config)
-        return HttpResponse(status="200", content=possible_graphs)
+        logger.info(f"Possible graphs: {possible_graphs}")
+        return HttpResponse(status="200", content=json.dumps(possible_graphs))
 
