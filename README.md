@@ -3,7 +3,7 @@
 Crux a data visualizer application
 =======
 
-### ➡️ Click [here](https://www.loom.com/share/dd2c5c7bceaa4840a09753211c08c031) to see the demo of the application. I keep updating the demo with each functionality that I add to the application
+### ➡️ Click [here for Part1: Making basic project structure](https://www.loom.com/share/dd2c5c7bceaa4840a09753211c08c031) and [here for Part2:handling QnA](https://www.loom.com/share/f66318c93e8543da91c17dc5f1b103ee)to see the demo of the application. I keep updating the demo with each functionality that I add to the application
 ### About Application
 This is django application with no authentication right now, utilising sqlite database to store data.
 Steps to run the application 
@@ -15,6 +15,7 @@ This will start the application on port 8000 on your localhost.
 
 ### Functionalities
 This application has the following endpoints currently. Inorder to user the application provide the openAI key in .env file as shown in env.example
+
 #### Available endpoints - 
 1. GET `/api/v1/csv` or `/api/v1/csv?file_id=${file_id}` to fetch all the files or a single file using fileid.
 2. POST `/api/v1/csv`
@@ -50,11 +51,12 @@ req body:
     }
 }
 ```
-6. POST `/api/v1/csv/save-config` for saving configurations of a specific file in database.
+6. POST `/api/v1/csv/save-config` for saving configurations of a specific file in database. Update signifies if you want to update the configuration in the database or not, incase it already exists in db.
 sample req body:
 ```json
 {
     "file_id": "5",
+    "update": true,
     "file_config": {
         "Campaign Id": {
             "type": "string"
@@ -89,7 +91,6 @@ req body:
 4. Go inside graph_analyser folder.
 5. Run `python manage.py migrate` to manage migrations.
 5. Run `python manage.py runserver` to start the server.
-
 
 
 
