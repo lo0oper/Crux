@@ -15,7 +15,7 @@ This will start the application on port 8000 on your localhost.
 
 ### Functionalities
 This application has the following endpoints currently. Inorder to user the application provide the openAI key in .env file as shown in env.example
-Available endpoints - 
+#### Available endpoints - 
 1. GET `/api/v1/csv` or `/api/v1/csv?file_id=${file_id}` to fetch all the files or a single file using fileid.
 2. POST `/api/v1/csv`
 sample curl
