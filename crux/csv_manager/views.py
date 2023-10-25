@@ -1,12 +1,13 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from .forms import CSVUploadForm
 from .models import CSVData, CSVConfig
 from .serializers import CSVConfigSerializer
-from .utilities  import get_csv_config,get_possible_graphs
+from .utilities import get_csv_config, get_possible_graphs, get_relevant_charts
 import json
 import logging
 
@@ -164,7 +165,7 @@ class SaveConfig(APIView):
     def post(self,request):
         file_id = request.data["file_id"]
         file_config = request.data["file_config"]
-        update_if_config_exists = request.data["update"]
+        update_if_config_exists = request.data.get("update",False)
         try:
             try:
                 csv_data_instance = get_object_or_404(CSVData, id=file_id)
@@ -177,7 +178,17 @@ class SaveConfig(APIView):
                     return HttpResponse(status=400,content="Please ensure there are not null or empty fields in file config")
 
             delimiter = ';'
-            csv_config_instance = get_object_or_404(CSVConfig,csv_data=csv_data_instance,file_config=file_config)
+            try:
+                csv_config_instance = get_object_or_404(CSVConfig,csv_data=csv_data_instance,file_config=file_config)
+                print(csv_config_instance)
+            except Http404 as e:
+                logger.debug(f"No csv config instance found in db")
+                logger.info(f"Creating config for the file: {file_id}. Config: {file_config}")
+                csv_config_instance = CSVConfig(
+                    csv_data=csv_data_instance,
+                    delimiter=delimiter,
+                    file_config=file_config
+                )
             if csv_config_instance:
                 if update_if_config_exists:
                     logger.info(f"Updating the config of the file in db to: {file_config}")
@@ -185,13 +196,8 @@ class SaveConfig(APIView):
                 else:
                     logger.info("Returning existing config of the file in db")
                     return JsonResponse({"file_id": file_id, "file_config": csv_config_instance.file_config})
-            else:
-                logger.info(f"Creating config for the file: {file_id}. Config: {file_config}")
-                csv_config_instance = CSVConfig(
-                    csv_data=csv_data_instance,
-                    delimiter=delimiter,
-                    file_config=file_config
-                )
+
+
             csv_config_instance.save()
 
         except Exception as e:
@@ -199,3 +205,21 @@ class SaveConfig(APIView):
             return HttpResponse(status=500,content=e)
 
         return JsonResponse({"file_id":file_id,"file_config": csv_config_instance.file_config})
+
+
+
+class QnA(APIView):
+    def post(self,request):
+        question = request.data["question"]
+        all_csv_configs = CSVConfig.objects.all()
+        each_file_data =[]
+        for csv_config in all_csv_configs:
+            print(csv_config.file_config)
+            each_file_data.append({
+                "file_config":csv_config.file_config,
+                "possible_charts":get_possible_graphs(csv_config.file_config)
+            })
+
+        answer = get_relevant_charts(question,each_file_data)
+        logger.info(f"Answer: {answer}")
+        return JsonResponse({"question":question,"answer":answer})

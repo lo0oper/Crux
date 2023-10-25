@@ -10,5 +10,6 @@ urlpatterns = [
     path("csv/config",views.GetConfig.as_view(),name="get_csv_config"),
     path("csv/graphs",views.GetPossibleGraphs.as_view(),name="get_possible_graphs"),
     path("csv/save-config",views.SaveConfig.as_view(),name="save_file_configuration"),
+    path("qna",views.QnA.as_view(),name="question_and_answer"),
     path("healthcheck",views.health_check,name="healthcheck"),
 ]
