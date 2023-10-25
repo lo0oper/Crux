@@ -9,5 +9,6 @@ urlpatterns = [
     path("csv/data",views.GetCSVData.as_view(),name="get_csv_file_data"),
     path("csv/config",views.GetConfig.as_view(),name="get_csv_config"),
     path("csv/graphs",views.GetPossibleGraphs.as_view(),name="get_possible_graphs"),
+    path("csv/save-config",views.SaveConfig.as_view(),name="save_file_configuration"),
     path("healthcheck",views.health_check,name="healthcheck"),
 ]

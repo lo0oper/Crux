@@ -4,7 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from .forms import CSVUploadForm
-from .models import CSVData
+from .models import CSVData, CSVConfig
+from .serializers import CSVConfigSerializer
 from .utilities  import get_csv_config,get_possible_graphs
 import json
 import logging
@@ -59,7 +60,6 @@ class CSVView(APIView):
                 else:
             ##-------Uncomment this code to store any kind of data----#####
                     # csv_file = request.FILES['document']
-                    # print(request)
                     # csv_content = csv_file.read().decode('utf-8')
                     # csv_title = request.data['title']
                     # description = request.data['description']
@@ -159,3 +159,43 @@ class GetPossibleGraphs(APIView):
         logger.info(f"Possible graphs: {possible_graphs}")
         return HttpResponse(status="200", content=json.dumps(possible_graphs))
 
+
+class SaveConfig(APIView):
+    def post(self,request):
+        file_id = request.data["file_id"]
+        file_config = request.data["file_config"]
+        update_if_config_exists = request.data["update"]
+        try:
+            try:
+                csv_data_instance = get_object_or_404(CSVData, id=file_id)
+            except CSVData.DoesNotExist:
+                # Handle the case where the CSVData instance does not exist
+                return HttpResponse(status=404, content="No file with provided file_id")
+
+            for key, val in file_config.items():
+                if not key or not val:
+                    return HttpResponse(status=400,content="Please ensure there are not null or empty fields in file config")
+
+            delimiter = ';'
+            csv_config_instance = get_object_or_404(CSVConfig,csv_data=csv_data_instance,file_config=file_config)
+            if csv_config_instance:
+                if update_if_config_exists:
+                    logger.info(f"Updating the config of the file in db to: {file_config}")
+                    csv_config_instance.file_config = file_config
+                else:
+                    logger.info("Returning existing config of the file in db")
+                    return JsonResponse({"file_id": file_id, "file_config": csv_config_instance.file_config})
+            else:
+                logger.info(f"Creating config for the file: {file_id}. Config: {file_config}")
+                csv_config_instance = CSVConfig(
+                    csv_data=csv_data_instance,
+                    delimiter=delimiter,
+                    file_config=file_config
+                )
+            csv_config_instance.save()
+
+        except Exception as e:
+            logger.exception(f"Error occured while storing configuration of the file. Error: {e}")
+            return HttpResponse(status=500,content=e)
+
+        return JsonResponse({"file_id":file_id,"file_config": csv_config_instance.file_config})
