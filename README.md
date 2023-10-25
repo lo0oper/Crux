@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 # Crux
 Crux a data visualizer application
 =======
 
-### ➡️Click [here](https://www.loom.com/share/dd2c5c7bceaa4840a09753211c08c031) to see the demo of the application. I keep updating the demo with each functionality that I add to the application
+### ➡️ Click [here](https://www.loom.com/share/dd2c5c7bceaa4840a09753211c08c031) to see the demo of the application. I keep updating the demo with each functionality that I add to the application
 ### About Application
 This is django application with no authentication right now, utilising sqlite database to store data.
 Steps to run the application 
